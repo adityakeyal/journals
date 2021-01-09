@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Random thoughts of a Developer</title>
+    <link>http://example.org/post/</link>
+    <description>Recent content in Posts on Random thoughts of a Developer</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 09 Jan 2021 17:18:12 +0530</lastBuildDate><atom:link href="http://example.org/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hyper-V Blocked Port</title>
+      <link>http://example.org/post/hyperv-blocked-port/</link>
+      <pubDate>Sat, 09 Jan 2021 17:18:12 +0530</pubDate>
+      
+      <guid>http://example.org/post/hyperv-blocked-port/</guid>
+      <description>Issue: We noticed an issue following Windows 10 update 1809 where Windows would reserve a range of ports that included port 50,000. Sometimes even 1303 (node) or 2181 (zookeeper) or IntellijIDE default ports.
+When you check which process is using the current port using the command
+netstat -an
+We find that the port is not being used. These ports are being reserved by docker or Hyper-V.
+To find ports reserved by docker/Hyper-V netsh interface ipv4 show excludedportrange protocol=tcp</description>
+    </item>
+    
+    <item>
+      <title>Monitoring With Zabbix</title>
+      <link>http://example.org/post/monitoring-with-zabbix/</link>
+      <pubDate>Thu, 31 Dec 2020 11:05:23 +0530</pubDate>
+      
+      <guid>http://example.org/post/monitoring-with-zabbix/</guid>
+      <description>Overview of Monitoring What is monitoring? To understand monitoring, let us first try an understand how is monitoring defined. Definition:
+ Observe and check the progress or quality of (something) over a period of time; keep under systematic review.
+ Lets understand the critical words from the above definition.
+ Observe Quality Systemic review  The idea behind any monitoring solution is to be able to continuously observe quality parameters. Here the quality should be quantitative , i.</description>
+    </item>
+    
+  </channel>
+</rss>

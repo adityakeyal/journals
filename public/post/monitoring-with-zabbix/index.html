@@ -1,0 +1,326 @@
+<!DOCTYPE html> 
+<html lang="en-us"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png"><meta name="msapplication-TileColor" content="#1793d0">
+  <meta name="theme-color" content="#1793d0"><title>Monitoring With Zabbix | Random thoughts of a Developer</title>
+  <meta property="og:title" content="Monitoring With Zabbix - Random thoughts of a Developer">
+  <meta property="og:type" content="article">
+  
+  <meta property="article:published_time" content="2020-12-31T11:05:23&#43;08:00">
+  
+  
+  <meta property="article:modified_time" content="2020-12-31T11:05:23&#43;08:00">
+  
+  <meta name="keywords" content="HTML, hugo, CSS">
+  <meta name="description" content="Monitoring With Zabbix"><meta name="author" content="">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <link rel="stylesheet" type="text/css" href="/css/hulga.min.css">
+</head><body>
+  <div id="main"><section class="hero is-primary shadow-hero  is-bold ">
+  <div class="hero-head">
+    <nav class="navbar is-primary">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item " href="http://example.org/">
+        Random thoughts of a Developer
+      </a>
+      <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-end">
+        
+      </div>
+    </div>
+  </div>
+</nav>
+  </div>
+  <div class="hero-body">
+    <header class="container has-text-centered">
+      <h1 class="title post-title">
+        Monitoring With Zabbix
+      </h1>
+      <h2 class="subtitle"><time class="post-meta">2020/12/31</time> ・
+          
+            <span class="post-tag post-meta">
+              <a href="http://example.org//categories/production-monitoring">production monitoring</a>
+            </span>
+          
+        </h2>
+      
+      <div class="tagbox post-meta">
+        
+        <span class="post-tag">
+          <a href="http://example.org//tags/zabbix">#zabbix</a>
+        </span>
+        
+      </div>
+      
+    </header>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-1 is-hidden-mobile"></div>
+      <div class="column is-8">
+      
+        <article class="content" id="post-content"><h1 id="overview-of-monitoring">Overview of Monitoring</h1>
+<h2 id="what-is-monitoring">What is monitoring?</h2>
+<p>To understand monitoring, let us first try an understand how is monitoring defined.
+<strong>Definition:</strong></p>
+<blockquote>
+<p><strong>Observe</strong> and check the <em>progress</em> or <strong>quality</strong> of (something) over a period of time; keep under <strong>systematic review</strong>.</p>
+</blockquote>
+<p>Lets understand the critical words from the above definition.</p>
+<ul>
+<li>Observe</li>
+<li>Quality</li>
+<li>Systemic review</li>
+</ul>
+<p>The idea behind any monitoring solution is to be able to continuously observe quality parameters. 
+Here the quality should be quantitative ,  i.e. it should be measurable in units. 
+A simple example is when you have a fever, the doctors ask you to measure the temperature at a regular interval. They rely on absolute measurement over a period of time. If you had a sudden fever spike once and only once, often its considered an abberation and can be given lower priority.</p>
+<h2 id="why-should-we-monitor">Why should we monitor?</h2>
+<h3 id="know-when-something-is-wrong">Know when something is wrong</h3>
+<p>As a site owner/ system administrator or even  a user, I want to know if a particular site is not working properly. This allows people to take informed decisions and avoid bigger issues.
+One should be on the lookout for symtoms rather than wait for a full blown disaster.</p>
+<p><img src="/zabbix/d70c895252d24789978cd01490a3fdc8.png" alt="Disaster"></p>
+<h3 id="understand-business-impact">Understand business impact</h3>
+<p>Another critical reason to monitor is often driven by the need to understand the business impact. 
+If you are running an application, implies there is some impact. The impact could be to paying customers it could be to your shareholders or it could be to simply your or your company&rsquo;s reputation.</p>
+<p>The impact may sometimes be small like : 
+<img src="/zabbix/6b0cad00d99e400c81ffed1e24c8cdba.png" alt="425d355943aadbe4403827d8a8c42e10.png"></p>
+<p>or it can be huge</p>
+<blockquote>
+<p>A 63-minute Amazon outage on its “Prime” sales day in 2018 cost the company nearly $100 million (£76 million) according to an estimate```</p>
+</blockquote>
+<blockquote>
+<p>In March 2015, a 12-hour Apple store outage cost the company $25 million.</p>
+</blockquote>
+<blockquote>
+<p>In August 2016, a five-hour power outage in an operation center caused 2,000 cancelled flights and an estimated loss of $150 million for Delta Airlines.</p>
+</blockquote>
+<blockquote>
+<p>In March 2019, a 14-hour outage cost facebook an estimated $90 million.</p>
+</blockquote>
+<blockquote>
+<p>In 2013 , Google temporarily went dark for 5 minutes, causing a 40% drop in web traffic</p>
+</blockquote>
+<p>The value of brand image can never be understated.</p>
+<h3 id="find-the-root-cause-fast">Find the root cause. Fast</h3>
+<p><img src="/zabbix/442d975fd3e14faca2b40cbd2426484e.png" alt="d8988bad1eaf292d0203a4a48dd19d79.png">
+<img src="/zabbix/a949ad2d28ef49deb0c6080821bbb1db.png" alt="33f79bc2c5f2954e4e604e4accaf90af.png"></p>
+<p>Whenever an issue happens, the first intinct is to do everything to resolve the problem quickly. However something that is of equally importance (if not more)is being able to find the root cause of the issue.
+To find any root cause, we need a lot of runtime information, and that is where the continuous monitoring comes into play.</p>
+<p>Having enough data helps us find proper root cause.</p>
+<h3 id="dont-ignore-the-symtoms">Don&rsquo;t ignore the symtoms</h3>
+<p><img src="/zabbix/6e40d46ee5b047de9022c6966ba83da5.png" alt="4b113b92d96be99df995285c6c7fd264.png"></p>
+<h1 id="monitoring-with-zabbix">Monitoring with Zabbix</h1>
+<h2 id="why-zabbix">Why Zabbix?</h2>
+<ul>
+<li>Enterprise Class open sourced monitoring solution</li>
+<li>Well established in industry (22+ years)</li>
+<li>Support for Network monitoring, Server monitoring, Application monitoring , Cloud Monitoring, Services Monitoring</li>
+<li>Free Free Free!!!</li>
+</ul>
+<p>While there are multiple commercial monitoring solutions available today, Zabbix provides an open source alternative that is ewll established.
+Being open source means, you can provide solutions for your own problems and with an active community support, there are multiple support base available.
+Finally, for many companies and individuals, spending a lot of money on monitoring (which is not their primary offerring) is not always possible. That is where it helps to have a free alternative.</p>
+<h3 id="architecture">Architecture</h3>
+<ul>
+<li>Zabbix Server</li>
+<li>Zabbix Agent</li>
+<li>Zabbix Proxy (optional)</li>
+</ul>
+<p>There are 3 primary components in the Zabbix architecture. Working on a classical server-agent model, it has an optional intermediary layer of proxies. 
+Let us describe these components in more details.</p>
+<h4 id="zabbix-server">Zabbix Server</h4>
+<p>Zabbix Server is the central process of Zabbix Software. This is the brain of the system and it performs the below functions</p>
+<ul>
+<li>Polling</li>
+<li>Trapping of data</li>
+<li>Calculate Trigger</li>
+<li>Send notifications to users</li>
+</ul>
+<p>Stores all data in DB (Postgres or MySQL) and written in C and PHP.</p>
+<p>Lets cover the</p>
+<ul>
+<li>Setup</li>
+<li>Key concepts
+<ul>
+<li>Hosts</li>
+<li>Items</li>
+<li>Triggers</li>
+<li>Action</li>
+</ul>
+</li>
+<li></li>
+<li></li>
+</ul>
+</article>
+      </div>
+      
+      <div class="column is-hidden-mobile">
+        <div class="sidebar" id="toc">
+          
+          <div class="post post-toc" id="post-toc">
+            
+          </div>
+        </div>
+      </div>
+      
+      </div>
+    </div>
+  </div>
+</section>
+
+  </div><footer class="footer">
+  <div class="content has-text-centered">
+    <p>Powered by <a href="https://gohugo.io">Hugo</a>. Theme <a href="https://www.github.com/wlh320/hugo-theme-hulga">Hulga</a></p>
+    <p>Copyright © 2020 wlh. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script><script>
+addBackToTop({
+  diameter: 42,
+
+  backgroundColor: "#1793d0",
+
+  innerHTML: '<svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>',
+  textColor: '#fff'
+});
+</script>
+<script type="text/javascript">
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    
+    if ($navbarBurgers.length > 0) {
+      
+      $navbarBurgers.forEach(el => {
+        el.addEventListener('click', () => {
+          
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+          
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+        });
+      });
+    }
+  });
+</script>
+  <link id="hlcss" rel="stylesheet" type="text/css">
+
+<script>
+  function addCss(url) {
+    var link = document.getElementById('hlcss');
+    link.href = url;
+  }
+  
+  var darkcss = "http://example.org/css/monokailight.css"
+  
+  var lightcss = "http://example.org/css/monokailight.css"
+  
+  if (window.matchMedia('(prefers-color-scheme)').media === 'not all') {
+    addCss(lightcss);
+  } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    addCss(darkcss);
+  } else {
+    addCss(lightcss);
+  }
+  window.matchMedia("(prefers-color-scheme: dark)").addListener(
+    e => e.matches && addCss(darkcss)
+  );
+  window.matchMedia("(prefers-color-scheme: light)").addListener(
+    e => e.matches && addCss(lightcss)
+  );
+</script>
+<script src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js"></script><script>
+  anchors.options = {
+    placement: 'left',
+    
+    icon: '#'
+  };
+  anchors.add('.content h1, .content h2, .content h3');
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha256-tn6hZ2YGDv0w1/DaFL4MiUoXuAVclrtFZs13ch3TB9M=" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha256-1qhJwAgsSPVSSjlQVTewHS49eaoAbOz651dveUANVBI=" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha256-oEuQVLwO5Ii6subChtLbrY5gx7NDRU+UJJ9jvvau+FI=" crossorigin="anonymous"></script><script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      
+      delimiters: [{
+        left: "$$",
+        right: "$$",
+        display: true
+      },
+      {
+        left: "\\[",
+        right: "\\]",
+        display: true
+      },
+      {
+        left: "$",
+        right: "$",
+        display: false
+      },
+      {
+        left: "\\(",
+        right: "\\)",
+        display: false
+      }
+      ]
+
+    });
+  });
+</script>
+
+  
+
+
+<link rel="stylesheet" type="text/css" href="http://example.org/css/toc.min.css"><script src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.post-toc',
+        
+        contentSelector: '#post-content',
+        
+        headingSelector: 'h1, h2, h3',
+        collapseDepth:  0 ,
+        scrollSmooth: true,
+        positionFixedSelector: '.post-toc',
+        
+        
+        fixedSidebarOffset: 273,
+    });
+</script>
+
+
+</body>
+
+</html>
