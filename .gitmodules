@@ -1,0 +1,18 @@
+[submodule "themes/ananke"]
+	path = themes/ananke
+	url = https://github.com/budparr/gohugo-theme-ananke.git
+[submodule "themes/fresh"]
+	path = themes/fresh
+	url = git@github.com:stackbithq/stackbit-theme-fresh.git
+[submodule "themes/dimension"]
+	path = themes/dimension
+	url = https://github.com/your-identity/hugo-theme-dimension.git
+[submodule "themes/bigspring"]
+	path = themes/bigspring
+	url = git@github.com:themefisher/bigspring-hugo-startup-theme.git
+[submodule "themes/hulga"]
+	path = themes/hulga
+	url = https://github.com/wlh320/hugo-theme-hulga.git
+[submodule "themes/anatole"]
+	path = themes/anatole
+	url = https://github.com/lxndrblz/anatole.git
