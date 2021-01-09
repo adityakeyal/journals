@@ -1,0 +1,104 @@
+---
+title: "Monitoring With Zabbix"
+date: 2020-12-31T11:05:23+05:30
+draft: true
+---
+
+# Overview of Monitoring
+
+## What is monitoring?
+To understand monitoring, let us first try an understand how is monitoring defined.
+**Definition:**
+
+> **Observe** and check the *progress* or **quality** of (something) over a period of time; keep under **systematic review**.
+
+Lets understand the critical words from the above definition.
+ - Observe
+ - Quality
+ - Systemic review
+
+The idea behind any monitoring solution is to be able to continuously observe quality parameters. 
+Here the quality should be quantitative ,  i.e. it should be measurable in units. 
+A simple example is when you have a fever, the doctors ask you to measure the temperature at a regular interval. They rely on absolute measurement over a period of time. If you had a sudden fever spike once and only once, often its considered an abberation and can be given lower priority.
+
+
+
+## Why should we monitor?
+### Know when something is wrong
+As a site owner/ system administrator or even  a user, I want to know if a particular site is not working properly. This allows people to take informed decisions and avoid bigger issues.
+One should be on the lookout for symtoms rather than wait for a full blown disaster.
+ ![Disaster](/d70c895252d24789978cd01490a3fdc8.png)
+
+### Understand business impact
+
+Another critical reason to monitor is often driven by the need to understand the business impact. 
+If you are running an application, implies there is some impact. The impact could be to paying customers it could be to your shareholders or it could be to simply your or your company's reputation.
+
+The impact may sometimes be small like : 
+![425d355943aadbe4403827d8a8c42e10.png](/6b0cad00d99e400c81ffed1e24c8cdba.png)
+
+or it can be huge
+
+> A 63-minute Amazon outage on its “Prime” sales day in 2018 cost the company nearly $100 million (£76 million) according to an estimate```
+
+> In March 2015, a 12-hour Apple store outage cost the company $25 million. 
+
+> In August 2016, a five-hour power outage in an operation center caused 2,000 cancelled flights and an estimated loss of $150 million for Delta Airlines.
+
+> In March 2019, a 14-hour outage cost facebook an estimated $90 million. 
+
+> In 2013 , Google temporarily went dark for 5 minutes, causing a 40% drop in web traffic
+
+The value of brand image can never be understated.
+
+
+### Find the root cause. Fast
+![d8988bad1eaf292d0203a4a48dd19d79.png](/442d975fd3e14faca2b40cbd2426484e.png)
+![33f79bc2c5f2954e4e604e4accaf90af.png](/a949ad2d28ef49deb0c6080821bbb1db.png)
+
+Whenever an issue happens, the first intinct is to do everything to resolve the problem quickly. However something that is of equally importance (if not more)is being able to find the root cause of the issue.
+To find any root cause, we need a lot of runtime information, and that is where the continuous monitoring comes into play.
+
+Having enough data helps us find proper root cause. 
+
+### Don't ignore the symtoms
+![4b113b92d96be99df995285c6c7fd264.png](/6e40d46ee5b047de9022c6966ba83da5.png)
+
+
+
+# Monitoring with Zabbix
+## Why Zabbix?
+ - Enterprise Class open sourced monitoring solution
+ - Well established in industry (22+ years)
+ - Support for Network monitoring, Server monitoring, Application monitoring , Cloud Monitoring, Services Monitoring
+ - Free Free Free!!!
+
+While there are multiple commercial monitoring solutions available today, Zabbix provides an open source alternative that is ewll established.
+Being open source means, you can provide solutions for your own problems and with an active community support, there are multiple support base available.
+Finally, for many companies and individuals, spending a lot of money on monitoring (which is not their primary offerring) is not always possible. That is where it helps to have a free alternative.
+
+### Architecture
+ - Zabbix Server
+ - Zabbix Agent
+ - Zabbix Proxy (optional)
+
+There are 3 primary components in the Zabbix architecture. Working on a classical server-agent model, it has an optional intermediary layer of proxies. 
+Let us describe these components in more details.
+
+#### Zabbix Server
+ Zabbix Server is the central process of Zabbix Software. This is the brain of the system and it performs the below functions
+  - Polling
+  - Trapping of data
+  - Calculate Trigger
+  - Send notifications to users
+Stores all data in DB (Postgres or MySQL) and written in C and PHP.
+
+
+- Setup
+- Key concepts
+	- Hosts
+	- Items
+	- Triggers
+	- Action
+- 
+- 

@@ -1,0 +1,49 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "Random thoughts of a Developer"
+theme = "hulga"
+
+# [params]
+# title = "I'm Jane Doe"
+# author = "Jane Doe"
+# description = "Call me Jane"
+# profilePicture = "images/profile.jpg"
+# 
+
+[params]
+# show in HTML meta tag
+  author = "Aditya"
+  keywords = "HTML, hugo, CSS"
+  description = "xxx's blog, xxx xx xxxx"
+
+  # change bulma's primary color
+  primaryColor = "#1793d0"
+
+  # subtitle on homepage
+  subtitle = "Technical Lead/Architect by day and programmer by night. programming languages are just a tool to make life easy"
+
+  # copyright text on footer
+  copyright = "Copyright © 2020 wlh. All rights reserved."
+
+  # enable katex rendering on every post page
+  math = true
+
+  # enable toc on every post page
+  toc = true
+
+  # enable TOC auto collapse
+  autoCollapseToc = true
+
+  # enable hero section's is-bold effect
+  heroBold = true
+
+  # enable PWA, prepare your icons and DON'T forget to modify manifest.json
+  pwa = false
+
+  # disable jsdelivr cdn, default false
+  noCDN = false
+
+
+[taxonomies]
+category = "categories"
+tag = "tags"
