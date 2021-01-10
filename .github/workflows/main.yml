@@ -26,7 +26,7 @@ jobs:
      
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2.14.13
+        uses: peaceiris/actions-hugo@v2.4.13
         with:
           hugo-version: '0.79.1'
            
