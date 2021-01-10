@@ -11,6 +11,8 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+environment: github_action_deploy_pages
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -38,7 +40,7 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3.7.3
         with:
-          github_token: ${{ secrets.GH_TOKEN }}
+          personal_token: ${{ secrets.MY_GH_TOKEN }}
           external_repository: adityakeyal/adityakeyal.github.io
           publish_dir: ./public
           user_name: adityakeyal
