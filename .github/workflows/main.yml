@@ -38,8 +38,8 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3.7.3
         with:
-          personal_token: ${{ secrets.MY_GH_TOKEN }}
           external_repository: adityakeyal/adityakeyal.github.io
+          personal_token: abcd
           publish_dir: ./public
           user_name: adityakeyal
           user_email: adi.keyal@gmail.com
