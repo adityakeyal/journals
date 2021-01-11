@@ -32,7 +32,7 @@ theme = "hulga"
   toc = true
 
   # enable TOC auto collapse
-  autoCollapseToc = true
+  autoCollapseToc = false
 
   # enable hero section's is-bold effect
   heroBold = true
