@@ -107,7 +107,7 @@ The challenge with the above approach is that every URL must be uniquely identif
 ### Option #2:
 Use rewriting to identify if a request is for Websocket or not. If for websocket then proxy to backend.
 
-
+```bash
 <VirtualHost *:443>
     ServerName public-server
     RewriteEngine on
@@ -118,3 +118,6 @@ Use rewriting to identify if a request is for Websocket or not. If for websocket
     ProxyPassReverse / http://<backend-server>/
     ProxyRequests off
 </VirtualHost>
+```
+
+The advantage with the above approach is it identifies a websocket reqest and automatically proxies it.
