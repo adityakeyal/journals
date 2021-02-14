@@ -85,3 +85,36 @@ AddOutputFilterByType DEFLATE application/javascript
 AddOutputFilterByType DEFLATE application/x-javascript
 AddOutputFilterByType DEFLATE image/svg+xml
 ```
+
+
+## Reverse Proxying Web Sockets
+### Option #1:
+Define a websocket proxy as below
+```bash
+<VirtualHost *:443>
+    ServerName public-server
+    ProxyPass /liveviewhandler/ ws://<backend-server>/liveviewhandler/
+    ProxyPassReverse /liveviewhandler/ wss://<backend-server>/liveviewhandler/
+    ProxyPass / https://<backend-server>/
+    ProxyPassReverse / https://<backend-server>/
+    ProxyRequests off
+</VirtualHost>
+```
+
+The challenge with the above approach is that every URL must be uniquely identified as a websocket only URL
+
+
+### Option #2:
+Use rewriting to identify if a request is for Websocket or not. If for websocket then proxy to backend.
+
+
+<VirtualHost *:443>
+    ServerName public-server
+    RewriteEngine on
+    RewriteCond %{HTTP:Upgrade} websocket [NC]
+    RewriteCond %{HTTP:Connection} upgrade [NC]
+    RewriteRule .* "wss://<backend-server>%{REQUEST_URI}" [P]
+    ProxyPass / http://<backend-server>/
+    ProxyPassReverse / http://<backend-server>/
+    ProxyRequests off
+</VirtualHost>
