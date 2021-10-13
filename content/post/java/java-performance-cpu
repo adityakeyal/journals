@@ -34,11 +34,27 @@ These are explained is more details below
 ### CPU Metrics
 The first thing to observe is the CPU utilization at a machine and process level. The easiest way to capture them is through the top command.
 #### Command:
-```$ top```
+```
+$ top -o +%CPU
+```
 #### Output
 ![cpu-utilization.png](/java-performance/cpu-utilization.png)
 
 Some points to consider:
-1. Total CPU Utilization - thsi gives a good indicator if the slowness is due to CPU starvation. This value can go upto 100%*[no of cores]. 
+1. Total CPU Utilization - This gives a good indicator if the slowness is due to CPU starvation. This value can go upto 100%*[no of cores]. 
 2. Top CPU hogging process. This is a good indicator to find the culprit. Sometimes this could be your own app. Sometmes it could be another app eating away at crucial resources and starving your app from CPU.
+
+### Memory Metrics
+The next thing we need to capture is the memory utilization at a machine and process level. The easiest way to capture them is through the same top command.
+#### Command:
+```
+$ top -o +%MEM
+```
+#### Output
+![memory-utilization.png](/java-performance/memory-utilization.png)
+
+Some points to consider:
+1. Total memory utilization - This gives a good indicator if the slowness is due to low memory availability. The classical symptopms will include low "KiB Mem" and high usage of "KiB Swap". If the system has is using a lot of swap memory, a lot of the resources will be used in swapping data in and out of the page memory. 
+2. Top memory hogging process. - Like the CPU, this is a good indicator to find the culprit process. The next step of action would depend on if the process isyour own app or a stray app.
+
 
