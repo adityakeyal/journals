@@ -30,8 +30,53 @@ Any basic retirement calculator needs to have the below functionalities
 1. D.O.B.
 2. Current Income
 3. Current Expenditure
-4. Expected Savings
+4. Expected Expediture post retirement
 5. Current Savings (if any)
 
-Lets start setting up a simple google sheet with the above data 
+Retirement can be in 2 flavours:
+1. Where we exhaust all our savings by the time we retire
+2. Where we still have some buffer kitty by the time we retire 
 
+
+Ideal Retirement:
+
+
+
+
+```javascript
+
+/**
+* existingAmount - The amount which is already saved , can be 0
+* amount - The regular amount invested at monthly
+* roi - The annual rate of interest
+* months - The total time period of investment
+* coumpoundingFrequency - The time period at which the amount will be compounded
+  1 - Monthly (Mutual Funds)
+  3 - Quarterly (Savings Bank Account)
+ 12 - Annual (eg. EPF/PPF etc)   
+*/
+
+function topupCompounding( existingAmount , amount , roi , months , coumpoundingFrequency , topupPercent ) {
+  
+  var total = existingAmount;
+  var tempInterest  = 0;
+
+  for(let i=0;i<months;i++) 
+  {
+    total = total + amount;
+    let interest = total * roi / 12 / 100; 
+    tempInterest+=interest;    
+    if((i+1)%coumpoundingFrequency==0 || (i+1)==months){
+        total+=tempInterest;
+        tempInterest=0;
+    }
+
+if((i+1)%12==0){
+    amount = amount * (100+ topupPercent)/100;
+}
+ 
+  }
+  return total;
+}
+
+```
