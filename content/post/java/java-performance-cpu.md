@@ -1,8 +1,10 @@
 ---
 title: "Java Performance Issues"
 date: 2021-10-13T07:49:02+05:30
+draft: false
 tags: [java]
 categories: [java]
+
 ---
 
 ## Performance Issue - what and why
