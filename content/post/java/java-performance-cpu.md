@@ -8,18 +8,19 @@ categories: [java]
 ---
 
 ## Performance Issue - what and why
-There is nothing more daunting and interesting than issues related to performance. While we pay a lot of "undue attention" to performance in code reviews, "Don't use a linked list, use an array list or use a Linked List not an Array List", we often miss the bigger picture. 
+There is nothing more daunting and interesting than issues related to performance. While we pay a lot of "undue attention" to performance in code reviews, "Don't use a Linked List, use an Array List or use a Linked List not an Array List", we often miss the bigger picture. 
 Most performance issues don't come from usage of type of list or types of for loops, they actually come from the most interesting and tricky parts of code.
 It could be a thread which is resulting in a deadlock due to a behavior in HashMap, it could be a very poorly written SQL query that when subjected to production loads is taking exceptionally high time, 
 or even the more common suspects of Garbage Collector (GC).
 
 The challenge with such issues are no expert code reviewer can actually identify such issues by walking through the code. Albeit I am sure there are multiple people who love to claim of an exception to the rule.
 The real challenge is, when presented with a problem such as this, is when the issue is 
-a. Sporadic
-b. Indeterministic
-c. Happens only on production or UAT
 
-Ho can we actually find the root cause of such issues without relying on some expensive tool or mere guess work.
+1.  Sporadic
+2. Indeterministic
+3. Happens only on production or UAT
+
+How can we actually find the root cause of such issues without relying on some expensive tool or mere guess work.
 
 
 ## Restart and it works
