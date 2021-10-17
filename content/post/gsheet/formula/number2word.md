@@ -35,24 +35,24 @@ function number2Word(number){
     // crores
     if(tokenizeNumber>=10000000){
         const croresAmount = tokenizeNumber/10000000;
-        word += numbers2Word(croresAmount) + " crores "
+        word += number2Word(croresAmount) + " crores "
         tokenizeNumber=tokenizeNumber%10000000;
     }
     //lacs
     if(tokenizeNumber>=100000){
         const lacsAmount = tokenizeNumber/100000;
-        word += numbers2Word(lacsAmount) + " lacs "
+        word += number2Word(lacsAmount) + " lacs "
         tokenizeNumber=tokenizeNumber%100000;
     }
     if(tokenizeNumber>=1000){
         const thousandAmount = tokenizeNumber/1000;
-        word += numbers2Word(thousandAmount) + " thousand "
+        word += number2Word(thousandAmount) + " thousand "
         tokenizeNumber=tokenizeNumber%1000;
     }
     
     if(tokenizeNumber>=100){
         const thousandAmount = tokenizeNumber/100;
-       word += numbers2Word(thousandAmount) + " hundred "
+       word += number2Word(thousandAmount) + " hundred "
        tokenizeNumber=tokenizeNumber%100;
     }
     
