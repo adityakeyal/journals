@@ -13,6 +13,9 @@ sudo firewall-cmd --reload
 sudo firewall-cmd --add-port=5000/tcp --permanent
 sudo firewall-cmd --reload
 
+sudo firewall-cmd --add-port=3306/tcp --permanent
+sudo firewall-cmd --reload
+
 
 # Set HTTPD File Permission
 sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
