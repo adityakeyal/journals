@@ -12,4 +12,4 @@ gswin64c -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=OUTPUT.pdf -sPDFPas
 
 // Extract to text
 
-gswin64c -q -dNOPAUSE -dBATCH -sDEVICE=txtwrite -sPDFPassword=A0084 -o output.txt 1Encrypt10665_202104.pdf
+gswin64c -q -dNOPAUSE -dBATCH -sDEVICE=txtwrite-%d -sPDFPassword=PASSWORD -o output.txt <filename>.pdf
