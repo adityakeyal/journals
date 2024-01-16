@@ -13,3 +13,6 @@ gswin64c -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=OUTPUT.pdf -sPDFPas
 // Extract to text
 
 gswin64c -q -dNOPAUSE -dBATCH -sDEVICE=txtwrite-%d -sPDFPassword=PASSWORD -o output.txt <filename>.pdf
+
+// Convert PDF to Image
+gswin64c -sDEVICE=png16m -sOutputFile=page-%03d.jpg -r100x100 -f <filename>.pdf
