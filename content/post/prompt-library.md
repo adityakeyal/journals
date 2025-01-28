@@ -1,6 +1,6 @@
 ---
 title: "Prompt Library"
-date: 2025-01-28T17:34:55+05:30
+date: 2025-01-27T17:34:55+05:30
 math: false
 tags: [genAI]
 categories: []
