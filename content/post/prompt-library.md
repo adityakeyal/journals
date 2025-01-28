@@ -92,3 +92,111 @@ Separation of concerns
 Proper type hints 
 ```
 
+Prompt for performance evaluation:
+
+```
+I am preparing for a performance review at my company where my 
+work is evaluated against three key attributes: 
+Attribute 1, 
+Attribute 2, 
+Attribute 3 
+
+As part of this process, I need to write a self-assessment that reflects 
+my contributions over the last two quarters. I would like this self-assessment to justify a high performance rating. 
+
+To help with this task, I will provide definitions for each of the three attributes and a summary of my projects and contributions. I would like 
+you to: 
+
+1. Assign each of my projects to one of the three attributes where it best fits. Please ensure that each project is only assigned once. 
+
+2. Write a positive and detailed self-assessment for each attribute, explaining how my projects demonstrate my proficiency in that area. Include specific examples and details. 
+
+3. Highlight the impact of my work by including quantifiable metrics where possible. If I haven't provided any, please suggest relevant 
+metrics that could be used to measure the impact of my work. 
+
+Here are the definitions of the attributes: 
+[Insert attribute definitions here] 
+
+
+And here are the projects and contributions I've made over the last two 
+quarters: 
+
+[Insert project summaries and contributions here]
+
+```
+
+
+Create an onboarding plan for new hires
+
+```
+Act as an experienced manager with over 20 years of experience 
+helping new hires onboard successfully into their roles as quickly as 
+possible. 
+I have just started a new job as a KeyAccount_Manager in the 
+MicrosoftBing _AdSalesteam, responsible for a portfolio of 50 clients 
+in the eCommerce industry, and my key performance indicator is US$ 
+10M in revenue this quarter. 
+Your task is to generate a 30-60-90 day onboarding plan for me using 
+the SMART.framewotk: Specific, Measurable, Achievable, Relevant, 
+and Time-Bound. 
+Match each goal with a metric so you can objectively measure my 
+success. Output in table format 
+```
+
+
+Prepare Social Media Posts:
+
+```
+You're a social media manager tasked with sharing long-form content 
+on Linkedln, but you've noticed that most people don't engage with 
+these posts or click the hyperlinks. 
+Creatively condense the below lengthy article into concise, valuable 
+summaries that capture the essence of the content and deliver 
+immediate value to your audience: 
+(paste the article) 
+```
+
+Prepare a development plan
+
+```
+Construct a detailed 30-60-90 day personal development plan that 
+not only focuses on job performance, but also showcases your 
+proactive nature and organizational skills using the SMART Framework 
+(Specific, Measurable, Actionable, Relevant, and Time-Bound). 
+Share your approach. Match each step or goal with a quantifiable 
+metric so you can measure success. 
+Output in table format. 
+```
+
+
+
+Template format for coding: 
+
+```
+I need to implement [specific functionality] in [programming language].
+Key requirements:
+1. [Requirement 1]
+2. [Requirement 2]
+3. [Requirement 3]
+Please consider:
+- Error handling
+- Edge cases
+- Performance optimization
+- Best practices for [language/framework]
+Please do not unnecessarily remove any comments or code.
+Generate the code with clear comments explaining the logic.
+```
+
+Code for review
+```
+Please review the following code:
+[paste your code]
+Consider:
+1. Code quality and adherence to best practices
+2. Potential bugs or edge cases
+3. Performance optimizations
+4. Readability and maintainability
+5. Any security concerns
+Suggest improvements and explain your reasoning for each suggestion.
+```
+
